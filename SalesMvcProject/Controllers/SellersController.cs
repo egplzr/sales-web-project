@@ -1,12 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SalesMvcProject.Services;
 
 namespace SalesMvcProject.Controllers;
 
-public class SellersController : Controller
+public class SellersController(SellerService service) : Controller
 {
-    // GET
+    private readonly SellerService _sellerService = service;
     public IActionResult Index()
     {
-        return View();
+        var list = _sellerService.FindAll();
+        return View(list);
     }
 }

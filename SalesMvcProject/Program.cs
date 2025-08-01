@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using SalesMvcProject.Data;
+using SalesMvcProject.Services;
+
 namespace SalesMvcProject;
 
 public class Program
@@ -16,6 +18,7 @@ public class Program
                 options.UseMySql(connectionString, serverVersion));
 
         builder.Services.AddScoped<SeedingService>();
+        builder.Services.AddScoped<SellerService>();
 
         // Add services to the container.
         builder.Services.AddControllersWithViews();
