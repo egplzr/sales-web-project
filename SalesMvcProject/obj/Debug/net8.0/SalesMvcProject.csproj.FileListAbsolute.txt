@@ -237,3 +237,4 @@ C:\# projects\csharp-dotnet\SalesMvcProject\SalesMvcProject\obj\Debug\net8.0\rjs
 C:\# projects\csharp-dotnet\SalesMvcProject\SalesMvcProject\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
 C:\# projects\csharp-dotnet\SalesMvcProject\SalesMvcProject\obj\Debug\net8.0\staticwebassets.build.json.cache
 C:\# projects\csharp-dotnet\SalesMvcProject\SalesMvcProject\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\# projects\csharp-dotnet\SalesMvcProject\SalesMvcProject\obj\Debug\net8.0\SalesMvcProject.sourcelink.json
