@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SalesMvcProject.Data;
 using SalesMvcProject.Models;
+using SalesMvcProject.Services.Exceptions;
 
 namespace SalesMvcProject.Services;
 
@@ -21,14 +22,34 @@ public class SellerService(SalesMvcProjectContext context)
 
     public Seller FindById(int id)
     {
-        return _context.Seller
+        var seller = _context.Seller
             .Include(seller => seller.Department)
             .FirstOrDefault(seller => seller.Id == id);
+       
+        return seller;
     }
 
     public void Remove(int id)
     {
         _context.Seller.Remove(FindById(id));
         _context.SaveChanges();
+    }
+
+    public void Update(Seller obj)
+    {
+        if (!_context.Seller.Any(seller => seller.Id == obj.Id))
+        {
+            throw new NotFoundException("Id not found");
+        }
+
+        try
+        {
+            _context.Update(obj);
+            _context.SaveChanges();
+        }
+        catch (DbUpdateConcurrencyException e)
+        {
+            throw new DbConcurrencyException(e.Message);
+        }
     }
 }
