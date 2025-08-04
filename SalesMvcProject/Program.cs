@@ -1,3 +1,5 @@
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using SalesMvcProject.Data;
@@ -26,6 +28,15 @@ public class Program
 
         var app = builder.Build();
 
+        var enUS = new CultureInfo("en-US");
+        var localizationOptions = new RequestLocalizationOptions()
+        {
+            DefaultRequestCulture = new RequestCulture(enUS),
+            SupportedCultures = new List<CultureInfo>{enUS},
+            SupportedUICultures = new List<CultureInfo>{enUS}
+        };
+        app.UseRequestLocalization(localizationOptions);
+        
         if (app.Environment.IsDevelopment())
         {
             using var scope = app.Services.CreateScope();
